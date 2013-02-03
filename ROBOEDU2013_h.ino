@@ -24,7 +24,7 @@
 
 // As pinagens de entrada estão definidas como
 
-# define digitalPinE1 4
+# define digitalPinE1 4 
 # define digitalPinE2 2
 # define digitalPinE3 7
 # define digitalPinE4 3
