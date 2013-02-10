@@ -105,6 +105,47 @@ void desligaLED(int entrada){
   }
 }
 
+void defineIntensidadeLed(int entrada, int intensidade){
+  if (intensidade > 255)
+  {
+    intensidade = 255;
+    Serial.println("Intensidade acima do máximo de 255, ajustando para 255");
+  }
+  else if(intensidade < 0){
+    intensidade = 0;
+    Serial.println("Intensidade abaixo do mínimo de 0, ajustando para 0");
+  }
+  switch (entrada){
+    case 1:
+      pinMode(pinSaida1,OUTPUT);
+      analogWrite(pinSaida1,intensidade);
+      Serial.print ("LED ajustado na intensidade: ");
+      Serial.println(intensidade);
+      break;
+    case 2:
+      pinMode(pinSaida2,OUTPUT);
+      analogWrite(pinSaida2,intensidade);
+      Serial.print ("LED ajustado na intensidade: ");
+      Serial.println(intensidade);
+      break;
+    case 3:
+      pinMode(pinSaida3,OUTPUT);
+      analogWrite(pinSaida3,intensidade);
+      Serial.print ("LED ajustado na intensidade: ");
+      Serial.println(intensidade);
+      break;
+    case 4:
+      pinMode(pinSaida4,OUTPUT);
+      analogWrite(pinSaida4,intensidade);
+      Serial.print ("LED ajustado na intensidade: ");
+      Serial.println(intensidade);
+      break;
+    default:
+      Serial.println("Entrada inexistente");
+      break;
+  }
+}
+
 void emiteSom(int entrada, int frequencia, int tempo){
     switch (entrada){
     case 1:
