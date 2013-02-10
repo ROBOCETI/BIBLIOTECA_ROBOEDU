@@ -24,7 +24,7 @@
 
 // As pinagens de entrada estão definidas como
 
-# define digitalPinE1 4 
+# define digitalPinE1 4
 # define digitalPinE2 2
 # define digitalPinE3 7
 # define digitalPinE4 3
@@ -45,47 +45,218 @@
 # define pinSaida3 9
 # define pinSaida4 11
 
-int botao (int entrada);
-int potenciomentro (int entrada);
+//---------------------------------------
+//---------- FUNÇÕES DE SAÍDA -----------
+//---------------------------------------
 
-int ligaLED(int entrada){
+void ligaLED(int entrada){
   switch (entrada){
     case 1:
       pinMode(pinSaida1,OUTPUT);
       digitalWrite(pinSaida1,HIGH);
+      Serial.println("LED ligado");
       break;
     case 2:
       pinMode(pinSaida2,OUTPUT);
       digitalWrite(pinSaida2,HIGH);
+      Serial.println ("LED ligado");
       break;
     case 3:
       pinMode(pinSaida3,OUTPUT);
       digitalWrite(pinSaida3,HIGH);
+      Serial.println ("LED ligado");
       break;
     case 4:
       pinMode(pinSaida4,OUTPUT);
       digitalWrite(pinSaida4,HIGH);
+      Serial.println ("LED ligado");
+      break;
+    default:
+      Serial.println("Entrada inexistente");
       break;
   }
 }
 
-int desligaLED(int entrada){
+void desligaLED(int entrada){
   switch (entrada){
     case 1:
       pinMode(pinSaida1,OUTPUT);
       digitalWrite(pinSaida1,LOW);
+      Serial.println ("LED desligado");
       break;
     case 2:
       pinMode(pinSaida2,OUTPUT);
       digitalWrite(pinSaida2,LOW);
+      Serial.println ("LED desligado");
       break;
     case 3:
       pinMode(pinSaida3,OUTPUT);
       digitalWrite(pinSaida3,LOW);
+      Serial.println ("LED desligado");
       break;
     case 4:
       pinMode(pinSaida4,OUTPUT);
       digitalWrite(pinSaida4,LOW);
+      Serial.println ("LED desligado");
+      break;
+    default:
+      Serial.println("Entrada inexistente");
       break;
   }
 }
+
+void emiteSom(int entrada, int frequencia, int tempo){
+    switch (entrada){
+    case 1:
+      pinMode(pinSaida1,OUTPUT);
+      tone(pinSaida1, frequencia);
+      Serial.print("Som na frequência ");
+      Serial.print(frequencia);
+      Serial.print(" por ");
+      Serial.print(tempo);
+      Serial.println(" milissegundos");
+      delay(tempo);
+      noTone(pinSaida1);
+      break;
+    case 2:
+      pinMode(pinSaida2,OUTPUT);
+      tone(pinSaida2, frequencia);
+      Serial.print("Som na frequência ");
+      Serial.print(frequencia);
+      Serial.print(" por ");
+      Serial.print(tempo);
+      Serial.println(" milissegundos");
+      delay(tempo);
+      noTone(pinSaida2);
+      break;
+    case 3:
+      pinMode(pinSaida3,OUTPUT);
+      tone(pinSaida3, frequencia);
+      Serial.print("Som na frequência ");
+      Serial.print(frequencia);
+      Serial.print(" por ");
+      Serial.print(tempo);
+      Serial.println(" milissegundos");
+      delay(tempo);
+      noTone(pinSaida3);
+      break;
+    case 4:
+      pinMode(pinSaida4,OUTPUT);
+      tone(pinSaida4, frequencia);
+      Serial.print("Som na frequência ");
+      Serial.print(frequencia);
+      Serial.print(" por ");
+      Serial.print(tempo);
+      Serial.println(" milissegundos");
+      delay(tempo);
+      noTone(pinSaida4);
+      break;
+    default:
+      Serial.println("Entrada inexistente");
+      break;
+  }
+}
+
+//---------------------------------------
+//---------- FUNÇÕES DE ENTRADA ---------
+//---------------------------------------
+
+int lerBotao(int entrada){
+  int estadoBotao;
+  switch (entrada){
+    case 1:
+      pinMode(digitalPinE1,INPUT);
+      estadoBotao = digitalRead(digitalPinE1);
+      if (estadoBotao == HIGH)
+        Serial.println("Botão pressionado; Retorno = 1");
+      else
+        Serial.println("Botão solto; Retorno = 0");
+      break;
+    case 2:
+      pinMode(digitalPinE2,INPUT);
+      estadoBotao = digitalRead(digitalPinE2);
+      if (estadoBotao == HIGH)
+        Serial.println("Botão pressionado; Retorno = 1");
+      else
+        Serial.println("Botão solto; Retorno = 0");
+      break;
+    case 3:
+      pinMode(digitalPinE3,INPUT);
+      estadoBotao = digitalRead(digitalPinE3);
+      if (estadoBotao == HIGH)
+        Serial.println("Botão pressionado; Retorno = 1");
+      else
+        Serial.println("Botão solto; Retorno = 0");
+      break;
+    case 4:
+      pinMode(digitalPinE4,INPUT);
+      estadoBotao = digitalRead(digitalPinE4);
+      if (estadoBotao == HIGH)
+        Serial.println("Botão pressionado; Retorno = 1");
+      else
+        Serial.println("Botão solto; Retorno = 0");
+      break;
+    case 5:
+      pinMode(digitalPinE5,INPUT);
+      estadoBotao = digitalRead(digitalPinE5);
+      if (estadoBotao == HIGH)
+        Serial.println("Botão pressionado; Retorno = 1");
+      else
+        Serial.println("Botão solto; Retorno = 0");
+      break;
+    case 6:
+      pinMode(digitalPinE6,INPUT);
+      estadoBotao = digitalRead(digitalPinE6);
+      if (estadoBotao == HIGH)
+        Serial.println("Botão pressionado; Retorno = 1");
+      else
+        Serial.println("Botão solto; Retorno = 0");
+      break;
+    default:
+      Serial.println("Entrada inexistente");
+      break;
+  }
+  return estadoBotao;
+}
+
+int lerPotenciometro(int entrada){
+  int valorLido;
+  switch (entrada){
+    case 1:
+      valorLido = analogRead(analogPinE1);
+      Serial.print("Valor lido do potenciometro: ");
+      Serial.println(valorLido);
+      break;
+    case 2:
+      valorLido = analogRead(analogPinE2);
+      Serial.print("Valor lido do potenciometro: ");
+      Serial.println(valorLido);
+      break;
+    case 3:
+      valorLido = analogRead(analogPinE3);
+      Serial.print("Valor lido do potenciometro: ");
+      Serial.println(valorLido);
+      break;
+    case 4:
+      valorLido = analogRead(analogPinE4);
+      Serial.print("Valor lido do potenciometro: ");
+      Serial.println(valorLido);
+      break;
+    case 5:
+      valorLido = analogRead(analogPinE5);
+      Serial.print("Valor lido do potenciometro: ");
+      Serial.println(valorLido);
+      break;
+    case 6:
+      valorLido = analogRead(analogPinE6);
+      Serial.print("Valor lido do potenciometro: ");
+      Serial.println(valorLido);
+      break;
+    default:
+      Serial.println("Entrada inexistente");
+      break;
+  }
+  return valorLido;
+}
+
+  
