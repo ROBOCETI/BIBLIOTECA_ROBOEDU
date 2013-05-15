@@ -49,27 +49,51 @@
 //---------- FUNÇÕES DE SAÍDA -----------
 //---------------------------------------
 
-void ligaLED(int entrada){
+void led(boolean ligar, int entrada){
   switch (entrada){
     case 1:
       pinMode(pinSaida1,OUTPUT);
-      digitalWrite(pinSaida1,HIGH);
-      Serial.println("LED ligado");
+      if (ligar) {
+        digitalWrite(pinSaida1,HIGH);
+        Serial.println("LED ligado");
+      }
+      else {
+        digitalWrite(pinSaida1,LOW);
+        Serial.println("LED desligado");
+      }
       break;
     case 2:
       pinMode(pinSaida2,OUTPUT);
-      digitalWrite(pinSaida2,HIGH);
-      Serial.println ("LED ligado");
+      if (ligar) {
+        digitalWrite(pinSaida2,HIGH);
+        Serial.println("LED ligado");
+      }
+      else {
+        digitalWrite(pinSaida2,LOW);
+        Serial.println("LED desligado");
+      }
       break;
     case 3:
       pinMode(pinSaida3,OUTPUT);
-      digitalWrite(pinSaida3,HIGH);
-      Serial.println ("LED ligado");
+      if (ligar) {
+        digitalWrite(pinSaida3,HIGH);
+        Serial.println("LED ligado");
+      }
+      else {
+        digitalWrite(pinSaida3,LOW);
+        Serial.println("LED desligado");
+      }
       break;
     case 4:
       pinMode(pinSaida4,OUTPUT);
-      digitalWrite(pinSaida4,HIGH);
-      Serial.println ("LED ligado");
+      if (ligar) {
+        digitalWrite(pinSaida4,HIGH);
+        Serial.println("LED ligado");
+      }
+      else {
+        digitalWrite(pinSaida4,LOW);
+        Serial.println("LED desligado");
+      }
       break;
     default:
       Serial.println("Entrada inexistente");
@@ -77,34 +101,9 @@ void ligaLED(int entrada){
   }
 }
 
-void desligaLED(int entrada){
-  switch (entrada){
-    case 1:
-      pinMode(pinSaida1,OUTPUT);
-      digitalWrite(pinSaida1,LOW);
-      Serial.println ("LED desligado");
-      break;
-    case 2:
-      pinMode(pinSaida2,OUTPUT);
-      digitalWrite(pinSaida2,LOW);
-      Serial.println ("LED desligado");
-      break;
-    case 3:
-      pinMode(pinSaida3,OUTPUT);
-      digitalWrite(pinSaida3,LOW);
-      Serial.println ("LED desligado");
-      break;
-    case 4:
-      pinMode(pinSaida4,OUTPUT);
-      digitalWrite(pinSaida4,LOW);
-      Serial.println ("LED desligado");
-      break;
-    default:
-      Serial.println("Entrada inexistente");
-      break;
-  }
-}
-
+// Esta função foi abortada devido aos novos requisitos
+// Pode-se reativar ela (ainda não foi modificada para o novo padrão!)
+/*
 void defineIntensidadeLed(int entrada, int intensidade){
   if (intensidade > 255)
   {
@@ -144,7 +143,7 @@ void defineIntensidadeLed(int entrada, int intensidade){
       Serial.println("Entrada inexistente");
       break;
   }
-}
+}*/
 
 void emiteSom(int entrada, int frequencia, int tempo){
     switch (entrada){
