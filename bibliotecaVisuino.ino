@@ -101,6 +101,7 @@ void led(boolean ligar, int entrada){
   }
 }
 
+
 // Esta função foi abortada devido aos novos requisitos
 // Pode-se reativar ela (ainda não foi modificada para o novo padrão!)
 /*
