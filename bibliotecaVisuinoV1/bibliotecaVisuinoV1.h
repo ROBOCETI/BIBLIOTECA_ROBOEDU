@@ -1,85 +1,64 @@
-
+#include <Servo.h>
 #include "Arduino.h"
 
-// Usando o comando Define para facilitar a programação. Cada entrada da placa será numerada
+// Using "Define" command to simplify the code
 
-# define E1 1  
-# define E2 2
-# define E3 3
-# define E4 4
-# define E5 5
-# define E6 6
+// Connectors ports
 
-// As saídas serão numeradas de 7  a 10
+# define C1 1  
+# define C2 2
+# define C3 3
+# define C4 4
+# define C5 5
+# define C6 6
 
-# define S0 7
-# define S1 8 
-# define S2 9 
-# define S3 10
+// Servos ports
 
-// As pinagens de entrada estão definidas como
+# define S1 7
+# define S2 8 
+# define S3 9 
+# define S4 10
 
-# define digitalPinE1 7
-# define digitalPinE2 8
-# define digitalPinE3 3
-# define digitalPinE4 4
-# define digitalPinE5 2
-# define digitalPinE6 5
+// Arduino pins where each connector port is plugged
 
-# define analogPinE1 1
-# define analogPinE2 0
-# define analogPinE3 3
-# define analogPinE4 2
-# define analogPinE5 5
-# define analogPinE6 4
+# define digitalPinC1 3
+# define digitalPinC2 4
+# define digitalPinC3 7
+# define digitalPinC4 2
+# define digitalPinC5 5
+# define digitalPinC6 1
 
-// As pinagens de saída estão definidas como
+# define analogPinC1 16
+# define analogPinC2 17
+# define analogPinC3 18
+# define analogPinC4 15
+# define analogPinC5 14
+# define analogPinC6 19
 
-# define pinSaida1 9
-# define pinSaida2 6
-# define pinSaida3 11
-# define pinSaida4 10
+// Arduino pins where each servo port is plugged
 
-// ------------ FUNÇÕES DE SAÍDA -----------------
+# define pinServo1 9
+# define pinServo2 8
+# define pinServo3 11
+# define pinServo4 10
 
-void led(boolean ligar, int saida);
-//void defineIntensidadeLed(int saida, int intensidade);
-void emiteSom(int saida, int frequencia, int tempo);
+// ------------ SENSORS -----------------
 
-//------------- FUNÇÕES DE ENTRADA ---------------
+void LED (int connector, int selectedLED, bool statusOn);
+bool pushbutton (int connector, int selectedButton);
+bool limit_switch (int connector); //not implemented
+int potentiomenter_sensor (int connector);
+int temperature_sensor (int connector);
+void buzzer (int connector, int frequency, int time);
+int soundsensor (int connector); 
+void IR_emitter (int connector, int frequency); //not implemented
+bool IR_receiver (int connector); //not implemented
+void LDR_emitter (int connector, bool statusOn);
+int LDR_receiver (int connector);
+void servo (int servoPort, int velocity);
 
-int lerBotao(int entrada);
-int lerPotenciometro(int entrada);
-int lerFinalDeCurso(int entrada);
-int lerSensorLuz(int entrada, int valorMinimo);
-float lerTemperatura(int entrada);
-
-// ------------ SENSOR DE CO-MQ7 -----------------
-
-class CS_MQ7{
-
-  public:
-		
-		CS_MQ7(int CoTogPin, int CoIndicatorPin);
-		void CoPwrCycler();
-		boolean CurrentState();
-		
-		unsigned long time;
-		unsigned long currTime;
-		unsigned long prevTime;
-		unsigned long currCoPwrTimer;
-
-		boolean CoPwrState;
-		
-	private:
-		int _CoIndicatorPin;
-		int _CoTogPin;
-	
-	};
-
-	
-int lerSensorCO(int entrada);
-//------------- FUNÇÕES DE AUXÍLIO ---------------
-
-float formatTemperatureCelsius(int value);
-
+int co_sensor (int connector); //not implemented
+int c2h5oh_sensor (int connector); //not implemented
+int co2_sensor (int connector); //not implemented
+int ch4_sensor (int connector); //not implemented
+int lgp_sensor (int connector); //not implemented
