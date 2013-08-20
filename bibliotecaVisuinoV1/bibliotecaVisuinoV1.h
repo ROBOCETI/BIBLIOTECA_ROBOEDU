@@ -1,4 +1,4 @@
-#include <Servo.h>
+//#include <Servo.h> //need to include direct on arduino's code
 #include "Arduino.h"
 
 // Using "Define" command to simplify the code
@@ -46,7 +46,7 @@
 
 void LED (int connector, int selectedLED, bool statusOn);
 bool pushbutton (int connector, int selectedButton);
-bool limit_switch (int connector); //not implemented
+bool limit_switch (int connector);
 int potentiomenter_sensor (int connector);
 int temperature_sensor (int connector);
 void buzzer (int connector, int frequency, int time);
