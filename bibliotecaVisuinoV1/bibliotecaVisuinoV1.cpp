@@ -187,6 +187,37 @@ bool pushbutton (int connector, int selectedButton) {
 }
 
 bool limit_switch (int connector) {
+	switch(connector) {
+		case C1:
+			pinMode(digitalPinC1, INPUT);
+			return(digitalRead(digitalPinC1));
+			break;
+
+		case C2:
+			pinMode(digitalPinC2, INPUT);
+			return(digitalRead(digitalPinC2));
+			break;
+
+		case C3:
+			pinMode(digitalPinC3, INPUT);
+			return(digitalRead(digitalPinC3));
+			break;
+			
+		case C4: 
+			pinMode(digitalPinC4, INPUT);
+			return(digitalRead(digitalPinC4));
+			break;
+
+		case C5:
+			pinMode(digitalPinC5, INPUT);
+			return(digitalRead(digitalPinC5));
+			break;
+
+		case C6:
+			pinMode(digitalPinC6, INPUT);
+			return(digitalRead(digitalPinC6));
+			break;
+	}
 	return false;
 }
 
